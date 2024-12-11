@@ -1,0 +1,7 @@
+{
+  "name": "Lunch-App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
