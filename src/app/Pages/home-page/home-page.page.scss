@@ -1,0 +1,54 @@
+// Variables (định nghĩa các màu sắc, font-size, v.v.)
+$primary-color: #3880ff;
+$secondary-color: #f4f5f8;
+$font-family: 'Arial', sans-serif;
+
+// General Styles
+body {
+  font-family: $font-family;
+  background-color: $secondary-color;
+}
+
+
+// Header Styles
+ion-header {
+    --background: transparent;
+    box-shadow: none;
+  
+    ion-toolbar {
+      background-color: $primary-color;
+      color: white;
+  
+      ion-title {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  // Content Styles
+ion-content {
+    padding: 16px;
+  
+    .welcome {
+      text-align: center;
+      margin-bottom: 20px;
+  
+      h1 {
+        font-size: 32px;
+        font-weight: bold;
+        color: $primary-color;
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+    }
+  
+    app-calendar-component {
+        margin-bottom: 20px; // Đảm bảo khoảng cách giữa calendar và các phần tử khác
+       
+      }
+  
+    app-menu-page {
+      margin-top: 20px;
+    }
+  }

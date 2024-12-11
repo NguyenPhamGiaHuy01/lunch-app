@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>OrderPage</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-select *ngIf="food() && food()?.menuDessert?.length" placeholder="Select Food">
+    <ion-select-option *ngFor="let foodItem of food()?.menuDessert" [value]="foodItem.name">
+      {{ foodItem.name }}
+    </ion-select-option>
+  </ion-select>
+
+  <div *ngIf="!food() || !food()?.menuDessert?.length">
+    <ion-select placeholder="Select Food">
+      <ion-select-option value="No food details available">
+        No food details available
+      </ion-select-option>
+    </ion-select>
+  </div>
+</ion-content>

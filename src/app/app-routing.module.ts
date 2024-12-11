@@ -5,7 +5,21 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+  },
+  {
+    path: 'menu-page',
+    loadChildren: () => import('./Components/menu-page/menu-page.module').then( m => m.MenuPagePageModule)
+  },
+  {
+    path: 'home-page',
+    loadChildren: () => import('./Pages/home-page/home-page.module').then( m => m.HomePagePageModule)
+  },
+  {
+    path: 'order-page',
+    loadChildren: () => import('./Pages/order-page/order-page.module').then( m => m.OrderPagePageModule)
+  },
+ 
+  
 ];
 @NgModule({
   imports: [
