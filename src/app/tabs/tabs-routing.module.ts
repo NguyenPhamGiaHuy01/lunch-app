@@ -2,43 +2,49 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
+import { authenticationGuard } from '../common/service/authentication.guard';
+import { authorizationGuard } from '../common/service/authorization.guard';
+
 export const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
+   
     children: [
       {
         path: 'home',
-        loadChildren:()=> import('../Pages/home-page/home-page.module').then(m => m.HomePagePageModule)
-      },
-      {
-        path: 'order/:id',
-        loadChildren:()=> import('../Pages/order-page/order-page.module').then(m => m.OrderPagePageModule)
-      },
-      {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        loadChildren: () => import('../Pages/home-page/home-page.module').then(m => m.HomePagePageModule),
+        canActivate:[authorizationGuard, authenticationGuard],
+        data:{
+          roles:['USER', 'USER_MAIL']
+        },
       },
       {
         path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule),
+        canActivate:[authorizationGuard, authenticationGuard],
+        data:{
+          roles:['ADMIN']
+        },
       },
       {
         path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule),
+        canActivate:[authorizationGuard, authenticationGuard],
+        data:{
+          roles:['USER', 'USER_MAIL']
+        },
       },
       {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: 'home',
         pathMatch: 'full'
       }
+     
     ]
+   
   },
-  {
-    path: '',
-    redirectTo: '/tabs/home',
-    pathMatch: 'full'
-  }
+ 
 ];
 
 @NgModule({

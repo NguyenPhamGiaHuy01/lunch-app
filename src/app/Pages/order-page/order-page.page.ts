@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit, signal, WritableSignal } from '@angular/core';
-import { MenuMain } from 'src/app/API/ApiResult';
+import { MenuMain } from 'src/app/Data/API/ApiResult';
 import { MenuServiceService } from 'src/app/Service/MenuService/menu-service.service';
 
 @Component({

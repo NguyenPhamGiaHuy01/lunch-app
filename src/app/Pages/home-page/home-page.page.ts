@@ -8,9 +8,10 @@ import { MenuServiceService } from 'src/app/Service/MenuService/menu-service.ser
   styleUrls: ['./home-page.page.scss'],
 })
 export class HomePagePage implements OnInit {
-onItemSelected($event: Event) {
-throw new Error('Method not implemented.');
-}
+  onSelection(value: any) {
+    console.log('Selection:', value);
+  }
+
 
   public date: string[] | undefined
   

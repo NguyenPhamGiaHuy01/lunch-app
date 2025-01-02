@@ -9,6 +9,10 @@ import { TabsPage } from './tabs.page';
 import { AdminPagePageModule } from '../Pages/admin-page/admin-page.module';
 
 import { HomePagePageModule } from '../Pages/home-page/home-page.module';
+import { RegisterPagePageModule } from '../Pages/register-page/register-page/register-page.module';
+import { HomePagePageRoutingModule } from '../Pages/home-page/home-page-routing.module';
+import { MenuPagePageModule } from '../Components/menu-page/menu-page.module';
+import { CalendarComponentModule } from '../Components/Calendar/calendar-component/calendar-component.module';
 
 
 
@@ -18,7 +22,8 @@ import { HomePagePageModule } from '../Pages/home-page/home-page.module';
     CommonModule,
     FormsModule,
     TabsPageRoutingModule,
-    HomePagePageModule,
+    HomePagePageRoutingModule,
+    RegisterPagePageModule,
     AdminPagePageModule
   ],
   declarations: [TabsPage]

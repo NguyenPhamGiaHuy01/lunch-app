@@ -1,23 +1,28 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { authenticationGuard } from './common/service/authentication.guard';
+import { authorizationGuard } from './common/service/authorization.guard';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    redirectTo: '/login',
+    pathMatch: 'full',
   },
   {
-    path: 'menu-page',
-    loadChildren: () => import('./Components/menu-page/menu-page.module').then( m => m.MenuPagePageModule)
+    path: 'login',
+    loadChildren: () => import('./Pages/login-page/login-page.module').then( m => m.LoginPagePageModule)
   },
   {
-    path: 'home-page',
-    loadChildren: () => import('./Pages/home-page/home-page.module').then( m => m.HomePagePageModule)
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
+    canActivate:[authenticationGuard, authorizationGuard],
+    data:{
+      roles:[ 'USER', 'ADMIN', 'USER_MAIL']
+    }
+  
   },
-  {
-    path: 'order-page',
-    loadChildren: () => import('./Pages/order-page/order-page.module').then( m => m.OrderPagePageModule)
-  },
+
  
   
 ];

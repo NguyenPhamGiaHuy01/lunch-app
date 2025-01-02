@@ -1,0 +1,42 @@
+.modal {
+    border: 1px solid #ccc; /* Border màu xám */
+    margin: 10px; /* Khoảng cách giữa các item */
+    --background: white;
+    color: black;
+  }
+.title {
+  color: white;
+  font-weight: bolder;
+  margin: 10px;
+}
+.values, .values2{
+  --background: white;
+}
+
+ion-checkbox::part(container) {
+  --checkbox-background: white
+  border-radius: 50%; /* Checkbox hình tròn */
+  border: 1px solid #c0c0c0;
+}
+ion-radio{
+  border-radius: 50%; // Checkbox hình tròn
+  border: 1px solid #c0c0c0;
+}
+
+ion-toolbar{
+    --background: #971a1e;
+  }
+
+
+
+  .confirm-button {
+    position: fixed;
+    bottom: 0px;
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: 85%;
+    height: 60px;
+    
+  }

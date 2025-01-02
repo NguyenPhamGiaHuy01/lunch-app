@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideRouter, RouteReuseStrategy, withComponentInputBinding } from '@angular/router';
-import { routes } from './tabs/tabs-routing.module';
+
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideHttpClient } from '@angular/common/http';
+import { routes } from './tabs/tabs-routing.module';
+
 
 
 

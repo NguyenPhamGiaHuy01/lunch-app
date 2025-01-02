@@ -1,0 +1,71 @@
+
+
+.logo {
+  width: 200px; /* Điều chỉnh độ rộng */
+  height: auto; /* Tự động điều chỉnh chiều cao theo tỷ lệ */
+  margin: 0px auto; /* Căn giữa theo chiều ngang và thêm khoảng cách */
+}
+
+.content_1{
+   background-color: #971a1e; /* Màu nền trắng với độ trong suốt */
+
+}
+.content_2{
+  --background: url('../../../assets/icon/background_img.png'); /* Màu nền tùy chỉnh */
+  background-color: #971a1e; /* Màu nền trắng với độ trong suốt */
+ background-size: cover; /* Đảm bảo ảnh nền bao phủ đầy đủ */
+ background-position: center; /* Căn giữa ảnh nền */
+}
+
+
+
+/* Ví dụ: tùy chỉnh font, padding, margin... */
+ion-button {
+  font-size: 14px;
+  padding: 0px;
+  
+}
+.userName, .password {
+  margin: 0 16px 10px; /* Đặt khoảng cách cho các item */
+  --background: rgba(187, 167, 167, 0.637); /* Màu đen mờ với độ trong suốt 30% */
+}
+
+.register{
+  margin: 0 16px; /* Đặt khoảng cách cho các item */
+  --background: aliceblue;
+
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: linear-gradient(to bottom, #971a1e, rgba(255, 0, 0, 0.5));
+  position: relative;
+}
+
+.pattern-background {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: url('../../../assets/icon/background_img.png') no-repeat center center;
+  background-size: cover;
+  z-index: -1;
+}
+
+.content {
+  flex: 1; /* Chiếm toàn bộ chiều cao trừ footer */
+  z-index: 1;
+  padding: 20px;
+}
+
+.bottom-grid {
+  position: absolute; /* Đặt cố định so với cha */
+  bottom: 0;          /* Nằm dưới cùng trang */
+  width: 100%;        /* Trải dài toàn chiều rộng */
+  z-index: 2;         /* Đảm bảo trên lớp nền */
+}
+  
+

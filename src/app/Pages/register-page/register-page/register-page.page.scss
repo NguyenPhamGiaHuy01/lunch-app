@@ -1,0 +1,46 @@
+// .province{
+//     padding:0,
+    
+// }
+.input{
+  font-size: 300;
+}
+
+ion-item{
+  --background: gray;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.header{
+  margin-top: 100px;
+  margin-bottom: 80px;
+  text-align: center;
+  .subTitle{
+    color: gray;
+    font-size: 0.9rem;
+  
+  }
+  title{
+    font-size: 2rem;
+  }
+  
+}
+
+
+.dropdown-container {
+    display: flex;
+    flex-wrap: wrap; /* Wrap items to new line on small screens */
+    // gap: 10px;
+  }
+
+  .dropdown-container ion-item {
+    flex: 1; /* Ensure dropdowns share equal space */
+    min-width: 100%; /* Default to full width for smaller screens */
+  }
+
+  @media (min-width: 768px) {
+    .dropdown-container ion-item {
+      min-width: calc(33.333% - 10px); /* 3 columns on medium+ screens */
+    }
+  }

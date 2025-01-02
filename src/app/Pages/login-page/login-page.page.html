@@ -1,0 +1,82 @@
+<ion-content>
+  <div class="main-container">
+    <!-- Div background hoa văn -->
+    <div class="pattern-background"></div>
+
+    <!-- Nội dung chính -->
+    <div class="content">
+      <ion-buttons>
+        <ion-back-button defaultHref="/" mode="md"></ion-back-button>
+      </ion-buttons>
+
+      <ion-img src="../../../assets/icon/logo.png" alt="Logo Phú Mỹ Hưng" class="logo"></ion-img>
+      <ion-form [formGroup]="signinForm">
+
+        <ion-label>
+          <h1 style="font-weight: bold; padding-left: 15px;">Đăng nhập</h1>
+        </ion-label>
+
+        <ion-item lines="none" mode="md" class="userName">
+          <ion-input placeholder="Số điện thoại" formControlName="username" (input)="userNameChage($event)" required></ion-input>
+        </ion-item>
+
+        <ion-text color="warning" style="padding-left: 12px;" *ngIf="signinForm.get('username')?.invalid && signinForm.get('username')?.touched || !validUserName">
+          <ion-icon name="warning"></ion-icon>Số điện thoại là bắt buộc
+        </ion-text>
+
+        <ion-item lines="none" mode="md" class="password">
+          <ion-input type="password" placeholder="Mật khẩu" formControlName="password" (input)="passsChage($event)">
+            <ion-input-password-toggle slot="end" mode="md" color="dark"></ion-input-password-toggle>
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="warning" style="padding-left: 12px;" *ngIf="signinForm.get('password')?.invalid && signinForm.get('password')?.touched || !validPass">
+          <ion-icon name="warning"></ion-icon>Mật khẩu là bắt buộc
+        </ion-text>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col style="align-content: center;">
+              <p style="padding-left: 12px;">Quên mật khẩu?</p>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-row>
+                <ion-col size="auto" style="padding: 0px;">
+                  <ion-button color="warning" mode="md" (click)="onSubmit()">
+                    <p style="margin: 0px; color: white;">Đăng nhập</p>
+                  </ion-button>
+                </ion-col>
+                <ion-col style="align-content: center;">
+                  <ion-icon name="logo-ionic" size="large" style="align-content: center;"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-item lines="none" mode="md" class="register">
+          <p style="margin: 0px; color: black; font-weight: bold;">Chưa có tài khoản?</p>
+          <ion-button fill="clear" slot="end" style="margin: 0px; color: #983248; font-weight: bold;">
+            Đăng ký
+          </ion-button>
+        </ion-item>
+
+      </ion-form>
+      
+      <ion-grid class="bottom-grid">
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col>
+            <p style="margin: 0; font-size: medium; font-weight: bold; text-align: center;">Tiếng Việt</p>
+            <p style="font-size: small; text-align: center;">English</p>
+          </ion-col>
+          <ion-col style="display: flex; justify-content: center; align-items: center;">
+            <ion-fab-button type="submit" style="justify-content: center;" size="small" color="warning">
+              <ion-icon name="chevron-forward"></ion-icon>
+            </ion-fab-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

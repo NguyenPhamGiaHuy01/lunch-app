@@ -1,0 +1,144 @@
+
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <h1 class="title">Welcome</h1>
+    <p class="subTitle">Sign Up to create your account</p>
+  </div>
+  <form action="">
+    <div class="ion-padding">
+      <!-- Name Input -->
+      <ion-item>
+        <ion-input placeholder="Name" class="input"></ion-input>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-item>
+  
+      <!-- Gender Selection -->
+      <ion-item>
+        <ion-select 
+          class="selectGender"
+          labelPlacement="stacked" 
+          placeholder="Gender" 
+          interface="popover" 
+          toggleIcon="caret-down-sharp"  
+          (ionChange)="handleChange($event)"
+          (ionDismiss)="handleDismiss()"
+        >
+          <ion-select-option value="male">Male</ion-select-option>
+          <ion-select-option value="female">Female</ion-select-option>
+          <ion-select-option value="other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+   
+      <div class="dropdown-container">
+        <!-- Province Dropdown -->
+        <ion-item>
+          <ion-select 
+            labelPlacement="stacked" 
+            placeholder="Province" 
+            class="selectProvince"
+            interface="popover"
+            toggleIcon="caret-down-sharp"  
+            (ionChange)="getDistrict($event)"
+          >
+            <ion-select-option 
+              *ngFor="let item of provinces" 
+              [value]="item.province_id"
+            >
+              {{ item.province_name }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+  
+        <!-- District Dropdown -->
+        <ion-item>
+          <ion-select 
+            labelPlacement="stacked" 
+            class="selectDistrict"
+            placeholder="District" 
+            interface="popover"
+            toggleIcon="caret-down-sharp" 
+            (ionChange)="getCommune($event)"
+          >
+          <ion-select-option 
+          *ngFor="let item of districts" 
+          [value]="item.district_id"
+        >
+          {{ item.district_name }}
+        </ion-select-option>
+           
+            <!-- Add more district options here -->
+          </ion-select>
+        </ion-item>
+  
+        <!-- Ward Dropdown -->
+        <ion-item>
+          <ion-select 
+            labelPlacement="stacked" 
+            placeholder="Ward" 
+            class="selectWard"
+            toggleIcon="caret-down-sharp" 
+            interface="popover"
+          >
+          <ion-select-option 
+          *ngFor="let item of communes" 
+          [value]="item"
+        >
+          {{ item.commune_name }}
+        </ion-select-option>
+            <!-- Add more ward options here -->
+          </ion-select>
+        </ion-item>
+      </div>
+    </div>
+  </form>
+  <!-- <form action="">
+    <div class="ion-padding">
+      <ion-item>
+        <ion-input placeholder="Name"></ion-input>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-item>
+      
+        <ion-item>
+            <ion-select labelPlacement="stacked" placeholder="Gender" class="always-flip" interface="popover" toggleIcon="caret-down-sharp"  
+            (ionChange)="handleChange($event)"
+            (ionDismiss)="handleDismiss()">
+             
+              <ion-select-option value="male">Male</ion-select-option>
+              <ion-select-option value="female">Female</ion-select-option>
+              <ion-select-option value="other">Other</ion-select-option>
+            </ion-select>
+        </ion-item>
+    
+      <div style="display: flex; gap: 10px;"> -->
+        <!-- <div class="address-container">
+        <ion-item style="flex: 1;">
+          <ion-select labelPlacement="stacked" placeholder="Province"  toggleIcon="caret-down-sharp"  (ionChange)="getDetailsProvinces()">
+            <ion-select-option *ngFor="let item of provinces" [value]="item">{{ item.province_name}}</ion-select-option>
+
+            
+          </ion-select>
+        </ion-item>
+
+        <ion-item style="flex: 1;">
+          <ion-select labelPlacement="stacked" placeholder="District" interface="popover">
+            <ion-select-option value="district1">District 1</ion-select-option>
+            <ion-select-option value="district2">District 2</ion-select-option>
+            <ion-select-option value="district3">District 3</ion-select-option>
+         
+          </ion-select>
+        </ion-item>
+
+        <ion-item style="flex: 1;">
+          <ion-select labelPlacement="stacked" placeholder="Ward" interface="popover">
+            <ion-select-option value="ward1">Ward 1</ion-select-option>
+            <ion-select-option value="ward2">Ward 2</ion-select-option>
+            <ion-select-option value="ward3">Ward 3</ion-select-option>
+            
+          </ion-select>
+        </ion-item>
+      </div>
+    
+    </div>
+  </form> -->
+</ion-content>

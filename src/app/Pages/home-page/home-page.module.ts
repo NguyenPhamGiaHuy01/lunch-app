@@ -10,6 +10,7 @@ import { HomePagePage } from './home-page.page';
 import { HomePagePageRoutingModule } from './home-page-routing.module';
 import { MenuPagePageModule } from '../../Components/menu-page/menu-page.module';
 import { CalendarComponentModule } from 'src/app/Components/Calendar/calendar-component/calendar-component.module';
+import { SelectListModule } from "../../Components/select-list/select-list.module";
 
 
 @NgModule({
@@ -19,8 +20,10 @@ import { CalendarComponentModule } from 'src/app/Components/Calendar/calendar-co
     IonicModule,
     HomePagePageRoutingModule,
     MenuPagePageModule,
-    CalendarComponentModule
-  ],
-  declarations: [HomePagePage]
+    CalendarComponentModule,
+    SelectListModule
+],
+  declarations: [HomePagePage],
+  exports:[HomePagePage]
 })
 export class HomePagePageModule {}
