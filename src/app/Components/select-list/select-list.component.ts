@@ -18,26 +18,10 @@ export class SelectListComponent implements OnInit {
   selectedKeys: { key: string, value: { value: string, label: string, sort: number, region: string } }[] = [];
   selectedEvent:  { key: string, value: { value: string, label: string, sort: number, region: string } }[] = [];
   searchKeyword: string = '';
-  constructor(private userService: AuthenticationService, private router: Router) { }
+  constructor( private router: Router) { }
 
   async ngOnInit() {
-    (await this.userService.loadArea()).subscribe(
-      {
-        next: (_value) => {
-          this.dataList = _value.map((item: any, index: number) => ({
-            key: index.toString(),
-            value: item
-          }));
-          console.log(this.type);
-          console.log(_value);
-          console.log(this.dataList);
-      
-        },
-        error(err) {
-          console.log(err);
-        },
-      }
-    );
+   
 
   }
   open() {
@@ -47,47 +31,45 @@ export class SelectListComponent implements OnInit {
   this.isOpen = false; 
  }
 
-  select() {
+ 
+ select() {
+  const emitData = (values: any[], objects: any[]) => {
+    this.selectedValues.emit(values);
+    this.selectedObjects.emit(objects);
+  };
+
+  if (this.selectedKeys.length > 0) {
+    const values = [...new Set(this.selectedKeys.map(key => key.value.label))];
+    const objects = [...new Set(this.selectedKeys)];
+    emitData(this.type === 'single' ? [values[0]] : values, this.type === 'single' ? [objects[0]] : objects);
+  } else {
+    emitData([], []);
+  }
+
+  this.selectedEvent = [...new Set(this.selectedKeys)];
+  this.isOpen = false;
+}
+  onCheckboxChange(event: any, value?: any) {
     if (this.type === 'single') {
-      if (this.selectedKeys.length > 0) {
-        const selectedValue = this.selectedKeys[0];
-        this.selectedValues.emit([selectedValue.value.label]);
-        this.selectedObjects.emit([selectedValue]);
+      if (event.detail.value) {
+        this.selectedKeys = [event.detail.value]; 
+      } else {
+        this.selectedKeys = [];
       }
       
-    } else if (this.type === 'multiple') {
-      if (this.selectedKeys.length > 0) {
-        this.selectedValues.emit([...new Set(this.selectedKeys.map(key => key.value.label))]);
-        this.selectedObjects.emit([...new Set(this.selectedKeys)]);
+    } else if(this.type === 'multiple' )
+    {
+      console.log(event.detail.checked)
+      if (event.detail.checked) {  
+        
+          this.selectedKeys.push(value);
+      } else{
+        this.selectedKeys = this.selectedKeys.filter(key => key.key !== value.key);
         
       }
-    }
-    this.selectedEvent = [...new Set(this.selectedKeys)]
-    this.isOpen = false;
-  }
-
-  onCheckboxChange(event: any, value?: any) {
-      if (this.type === 'single') {
-        if (event.detail.value) {
-          this.selectedKeys = [event.detail.value]; 
-        } else {
-          this.selectedKeys = [];
-        }
-        
-      } else if(this.type === 'multiple' )
-      {
-
-        if (event.detail.checked) {  
-          
-            this.selectedKeys.push(value);
-        } else{
-          this.selectedKeys = this.selectedKeys.filter(key => key.key !== value.key);
-          
-        }
-        
-      }  
-  }
- 
+      
+    }  
+}
   
  selectedLabels(): string {
     if (this.type === 'single') {
@@ -101,4 +83,54 @@ export class SelectListComponent implements OnInit {
 
 
 
+  //  select() {
+//   console.log(this.selectedEvent)
+//   if (this.type === 'single') {
+//     if (this.selectedKeys.length > 0) {
+//       const selectedValue = this.selectedKeys[0];
+//       this.selectedValues.emit([selectedValue.value.label]);
+//       this.selectedObjects.emit([selectedValue]);
+//     }
+//     // else{
+//     //     this.selectedValues.emit([]);
+//     //     this.selectedObjects.emit([]);
+//     // }
+    
+//   } else if (this.type === 'multiple') {
+//     if (this.selectedKeys.length > 0) {
+//       this.selectedValues.emit([...new Set(this.selectedKeys.map(key => key.value.label))]);
+//       this.selectedObjects.emit([...new Set(this.selectedKeys)]);
+      
+//     }
+//     // else{
+//     //     this.selectedValues.emit([]);
+//     //     this.selectedObjects.emit([]);
+//     // }
+//   }
+//   this.selectedEvent = [...new Set(this.selectedKeys)]
+//   this.isOpen = false;
+// }
+
+
   
+  // onCheckboxChange(event: any, value?: any) {
+  //     if (this.type === 'single') {
+  //       if (event.detail.value) {
+  //         this.selectedKeys = [event.detail.value]; 
+  //       } else {
+  //         this.selectedKeys = [];
+  //       }
+        
+  //     } else if(this.type === 'multiple' )
+  //     {
+  //       console.log(event.detail.checked)
+  //       if (event.detail.checked) {  
+  //         console.log("check")
+  //           this.selectedKeys.push(value);
+  //       } else{
+  //         this.selectedKeys = this.selectedKeys.filter(key => key.key !== value.key);
+          
+  //       }
+        
+  //     }  
+  // }

@@ -12,6 +12,6 @@
   </div>
   <app-menu-page [dateTimeEvent]="date" ></app-menu-page> -->
 
-  <app-select-list type="single" (selectedValues)="onSelection($event)" 
+  <app-select-list type="multiple" [dataList]="dataList" (selectedValues)="onSelection($event)" 
   (selectedObjects)="onSelection($event)"></app-select-list>
 </ion-content>
